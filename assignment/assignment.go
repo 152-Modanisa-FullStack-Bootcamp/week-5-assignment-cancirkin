@@ -58,5 +58,13 @@ func WordSplit(arr [2]string) string {
 }
 
 func VariadicSet(i ...interface{}) []interface{} {
-	return nil
+	keys := make(map[interface{}]bool)
+	var list []interface{}
+	for _, v := range i {
+		if value := keys[v]; !value {
+			keys[v] = true
+			list = append(list, v)
+		}
+	}
+	return list
 }
